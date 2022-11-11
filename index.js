@@ -3,7 +3,7 @@ var computerChoiceArray = ['r', 's', 'p'];
 var userScore = 0;
 var computerScore = 0;
 var round = 1;
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 10; i++) {
    // ranodom computer choice
    var computerChoice = computerChoiceArray[Math.floor(Math.random() * computerChoiceArray.length)];
    // ask user for his choice
