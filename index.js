@@ -8,34 +8,68 @@ for (var i = 0; i < 10; i++) {
    var computerChoice = computerChoiceArray[Math.floor(Math.random() * computerChoiceArray.length)];
    // ask user for his choice
    var userChoice = prompt(
-      "Round: " + round + " of 5" + "\n" +
-      "Chose one of p r s" + "\n" +
+      "Round: " + round + " of 10" + "\n" +
+      "Chose between P or R or S " + "\n" +
       "\n" + "User Score: " + userScore + "\n" +
       "Computer Score: " + computerScore);
    // if user click "Cancel" exit game
    if (userChoice === null) {
       break;
    }
+   // change user input to lower case
+   userChoice = userChoice.toLowerCase();
    // check for correct input
    if (computerChoiceArray.includes(userChoice)) {
       round++;
+      // change user and computer choices to full name
+      var newUserChoice;
+      switch(userChoice) {
+         case "p":
+            newUserChoice = "paper";
+            break;
+         case "r":
+            newUserChoice = "rock";
+            break;
+         case "s":
+            newUserChoice = "scissors";
+            break;
+         default:
+            newUserChoice = "";
+      }
+      var newComputerChoice;
+      switch(computerChoice) {
+         case "p":
+            newComputerChoice = "paper";
+            break;
+         case "r":
+            newComputerChoice = "rock";
+            break;
+         case "s":
+            newComputerChoice = "scissors";
+            break;
+         default:
+            newComputerChoice = "";
+      }
       // first check for a tie
       if (userChoice === computerChoice) {
-         alert("It's a tie!" + "\n" +
-            "User choice: " + userChoice + "\n" + 
-            "Computer choice: " + computerChoice)
+         alert(
+            "User choice: " + newUserChoice + "\n" +
+            "Computer choice: " + newComputerChoice + "\n" +
+            "It's a tie!")
       } else {
          var result = userChoice + computerChoice;
          if (winningConditions.includes(result)) {
             userScore++;
-            alert("You won!" + "\n" + 
-               "User choice: " + userChoice + "\n" + 
-               "Computer choice: " + computerChoice);
+            alert(
+               "User choice: " + newUserChoice + "\n" +
+               "Computer choice: " + newComputerChoice + "\n" +
+               "You won!");
          } else {
             computerScore++;
-            alert("Computer won!" + "\n" +
-               "User choice: " + userChoice + "\n" + 
-               "Computer choice: " + computerChoice);
+            alert(
+               "User choice: " + newUserChoice + "\n" +
+               "Computer choice: " + newComputerChoice + "\n" +
+               "Computer won!");
 
          }
       }
@@ -47,11 +81,11 @@ for (var i = 0; i < 10; i++) {
 }
 
 //check for the winner
-var winner = computerScore === userScore ? "It's a tie!" : 
-computerScore > userScore ? "Computer won!" : "You Won!!!";
+var winner = computerScore === userScore ? "It's a tie!" :
+   computerScore > userScore ? "Computer won!" : "You Won!!!";
 
-document.body.innerText = "Final Result: " + "\n" + "User Score: " + userScore + "\n" + 
-"Computer score: " + computerScore + "\n" + winner;
+document.body.innerText = "Final Results: " + "\n" + "User Score: " + userScore + "\n" +
+   "Computer score: " + computerScore + "\n" + winner;
 
 
 
